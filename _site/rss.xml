@@ -5,16 +5,27 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 05 Mar 2016 13:40:21 +0800</lastBuildDate>
-        <pubDate>Sat, 05 Mar 2016 13:40:21 +0800</pubDate>
+        <lastBuildDate>Sun, 06 Mar 2016 21:34:38 +0800</lastBuildDate>
+        <pubDate>Sun, 06 Mar 2016 21:34:38 +0800</pubDate>
         <ttl>60</ttl>
 
 
         <item>
                 <title>2016年学习计划</title>
                 <description>
-&lt;p&gt;###马上就要工作满一年了，想起来时间过得可真快啊。不过过去一年生活上变化不大，房价倒是直接翻倍。想起来真是可怕。
-###2016年不能再漫无目标学习了。&lt;/p&gt;
+&lt;p&gt;##2015年总结
+马上就要工作满一年了，想起来时间过得可真快啊。不过过去一年生活上变化不大，房价倒是直接翻倍。想起来真是可怕。&lt;/p&gt;
+
+&lt;p&gt;##2016年目标&lt;/p&gt;
+
+&lt;p&gt;###2016年学习计划
+1. 首先需要在3月份完成对redis的学习。因为公司docker环境默认部署有redis。所以用起来比较方便，最起码不用自己动手去部署了。
+2. iOS学习。需要弄明白整个iOS开发的整套框架。争取能真正把集思路中套利的数据爬下来，然后做一个iOS的app。
+3. epoll的学习。公司现有的后台框架，以及开源的Python框架Tornado都是基于epoll的。有必要去深入了解一下。（入股时间有富裕，还可以去学习一下flask）
+4. Mooc上开源的计算机课程的学习。重点有几个: 
+   1. iOS8编程（网易公开课）
+   2. 编译原理（coursera）
+   3. 算法导论&lt;/p&gt;
 </description>
                 <link>http://wangtengchuan.github.io/2016/03/05/2016</link>
                 <guid>http://wangtengchuan.github.io/2016/03/05/2016</guid>

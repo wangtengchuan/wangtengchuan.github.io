@@ -5,10 +5,40 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sun, 06 Mar 2016 21:34:38 +0800</lastBuildDate>
-        <pubDate>Sun, 06 Mar 2016 21:34:38 +0800</pubDate>
+        <lastBuildDate>Sat, 19 Mar 2016 21:54:37 +0800</lastBuildDate>
+        <pubDate>Sat, 19 Mar 2016 21:54:37 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>vim技巧</title>
+                <description>
+&lt;p&gt;#VIM技巧
+&lt;strong&gt;VIM&lt;/strong&gt;是非常好用的在粘贴剪贴板的多行文本的时候，文本会[自动缩进][1]。非常头疼。其实有一个比较好的解决方案，就是设置进入粘贴模式&lt;em&gt;set paste&lt;/em&gt;。然后粘贴完毕的时候又取消粘贴模式&lt;em&gt;set nopaste&lt;/em&gt;。可以在配置文件里面设置F9键为切换键。*set pastetoggle=&lt;f9&gt;*
+[1]http://hi.csdn.net/attachment/201103/1/0_12989517383EM3.gif&lt;/f9&gt;&lt;/p&gt;
+</description>
+                <link>http://wangtengchuan.github.io/2016/03/19/vim</link>
+                <guid>http://wangtengchuan.github.io/2016/03/19/vim</guid>
+                <pubDate>Sat, 19 Mar 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>new post</title>
+                <description>
+</description>
+                <link>http://wangtengchuan.github.io/2016/03/09/new-post</link>
+                <guid>http://wangtengchuan.github.io/2016/03/09/new-post</guid>
+                <pubDate>Wed, 09 Mar 2016 00:00:00 +0800</pubDate>
+        </item>
+
+        <item>
+                <title>mysql笔记</title>
+                <description>
+</description>
+                <link>http://wangtengchuan.github.io/2016/03/09/mysql</link>
+                <guid>http://wangtengchuan.github.io/2016/03/09/mysql</guid>
+                <pubDate>Wed, 09 Mar 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>2016年学习计划</title>

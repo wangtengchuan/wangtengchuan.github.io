@@ -3,10 +3,14 @@ http://wangtengchuan.github.io/archive
 http://wangtengchuan.github.io/atom.xml
 http://wangtengchuan.github.io/categories
 http://wangtengchuan.github.io/
+http://wangtengchuan.github.io/new-page
 http://wangtengchuan.github.io/pages
 http://wangtengchuan.github.io/rss.xml
 http://wangtengchuan.github.io/sitemap.txt
 http://wangtengchuan.github.io/tags
 
+http://wangtengchuan.github.io/2016/03/19/vim
+http://wangtengchuan.github.io/2016/03/09/new-post
+http://wangtengchuan.github.io/2016/03/09/mysql
 http://wangtengchuan.github.io/2016/03/05/2016
 http://wangtengchuan.github.io/2016/02/28/hello-world

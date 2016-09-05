@@ -2,8 +2,8 @@
 layout: post
 title: "Introduction to MongoDB"
 description: ""
-category: 
-tags: []
+category: database
+tags: [database, nosql]
 ---
 {% include JB/setup %}
 

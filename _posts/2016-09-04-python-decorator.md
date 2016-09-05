@@ -1,5 +1,16 @@
+---
+layout: post
+title: "Introduction to MongoDB"
+description: ""
+category: python
+tags: [python, decorator]
+---
+{% include JB/setup %}
+
 #Python装饰器
+
 ###装饰器基础
+
 ####Python函数也是对象
 在python中**函数即对象**，这是理解装饰器的基础。首先我们来看一个简单的例子：
 

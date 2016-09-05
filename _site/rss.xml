@@ -5,8 +5,8 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Mon, 05 Sep 2016 21:04:06 +0800</lastBuildDate>
-        <pubDate>Mon, 05 Sep 2016 21:04:06 +0800</pubDate>
+        <lastBuildDate>Mon, 05 Sep 2016 21:07:28 +0800</lastBuildDate>
+        <pubDate>Mon, 05 Sep 2016 21:07:28 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -299,16 +299,19 @@ MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON�
 &lt;p&gt;上述操作对于Memcached＋Mysql组合通常需要2-3次I/O（区别于具体设计），即：通过子内容条件查询到子内容主键，然后从Memcached中缓存的entity获取关联的父内容主键，然后从Memcached中获取父内容。&lt;/p&gt;
 
 </description>
-                <link>http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB</link>
-                <guid>http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB</guid>
+                <link>http://wangtengchuan.github.io/database/2016/09/05/IntroductionToMongoDB</link>
+                <guid>http://wangtengchuan.github.io/database/2016/09/05/IntroductionToMongoDB</guid>
                 <pubDate>Mon, 05 Sep 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>
-                <title>Python Decorator</title>
-                <description>&lt;p&gt;#Python装饰器
-###装饰器基础
-####Python函数也是对象
+                <title>Introduction to MongoDB</title>
+                <description>
+&lt;p&gt;#Python装饰器&lt;/p&gt;
+
+&lt;p&gt;###装饰器基础&lt;/p&gt;
+
+&lt;p&gt;####Python函数也是对象
 在python中&lt;strong&gt;函数即对象&lt;/strong&gt;，这是理解装饰器的基础。首先我们来看一个简单的例子：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;
@@ -611,8 +614,8 @@ m. say_your_age()
 &lt;p&gt;所以我们知道了，用@my_deco就是调用了装饰器函数my_deco
 &lt;a href=&quot;http://stackoverflow.com/questions/739654/how-can-i-make-a-chain-of-function-decorators-in-python&quot;&gt;http://stackoverflow.com/questions/739654/how-can-i-make-a-chain-of-function-decorators-in-python&lt;/a&gt;&lt;/p&gt;
 </description>
-                <link>http://wangtengchuan.github.io/2016/09/04/python-decorator</link>
-                <guid>http://wangtengchuan.github.io/2016/09/04/python-decorator</guid>
+                <link>http://wangtengchuan.github.io/python/2016/09/04/python-decorator</link>
+                <guid>http://wangtengchuan.github.io/python/2016/09/04/python-decorator</guid>
                 <pubDate>Sun, 04 Sep 2016 00:00:00 +0800</pubDate>
         </item>
 

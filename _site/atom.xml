@@ -4,7 +4,7 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-05T21:04:06+08:00</updated>
+ <updated>2016-09-05T21:07:28+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Introduction to MongoDB</title>
-   <link href="http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB"/>
+   <link href="http://wangtengchuan.github.io/database/2016/09/05/IntroductionToMongoDB"/>
    <updated>2016-09-05T00:00:00+08:00</updated>
-   <id>http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB</id>
+   <id>http://wangtengchuan.github.io/database/2016/09/05/IntroductionToMongoDB</id>
    <content type="html">
 &lt;h1 id=&quot;introduction-to-mongodb&quot;&gt;Introduction to MongoDB&lt;/h1&gt;
 
@@ -307,13 +307,16 @@ MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON�
  </entry>
  
  <entry>
-   <title>Python Decorator</title>
-   <link href="http://wangtengchuan.github.io/2016/09/04/python-decorator"/>
+   <title>Introduction to MongoDB</title>
+   <link href="http://wangtengchuan.github.io/python/2016/09/04/python-decorator"/>
    <updated>2016-09-04T00:00:00+08:00</updated>
-   <id>http://wangtengchuan.github.io/2016/09/04/python-decorator</id>
-   <content type="html">&lt;p&gt;#Python装饰器
-###装饰器基础
-####Python函数也是对象
+   <id>http://wangtengchuan.github.io/python/2016/09/04/python-decorator</id>
+   <content type="html">
+&lt;p&gt;#Python装饰器&lt;/p&gt;
+
+&lt;p&gt;###装饰器基础&lt;/p&gt;
+
+&lt;p&gt;####Python函数也是对象
 在python中&lt;strong&gt;函数即对象&lt;/strong&gt;，这是理解装饰器的基础。首先我们来看一个简单的例子：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;

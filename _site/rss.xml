@@ -5,8 +5,8 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Mon, 05 Sep 2016 21:07:28 +0800</lastBuildDate>
-        <pubDate>Mon, 05 Sep 2016 21:07:28 +0800</pubDate>
+        <lastBuildDate>Mon, 05 Sep 2016 21:08:44 +0800</lastBuildDate>
+        <pubDate>Mon, 05 Sep 2016 21:08:44 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -305,7 +305,7 @@ MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON�
         </item>
 
         <item>
-                <title>Introduction to MongoDB</title>
+                <title>Python装饰器</title>
                 <description>
 &lt;p&gt;#Python装饰器&lt;/p&gt;
 

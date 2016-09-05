@@ -4,7 +4,7 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-05T21:07:28+08:00</updated>
+ <updated>2016-09-05T21:08:44+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
@@ -307,7 +307,7 @@ MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON�
  </entry>
  
  <entry>
-   <title>Introduction to MongoDB</title>
+   <title>Python装饰器</title>
    <link href="http://wangtengchuan.github.io/python/2016/09/04/python-decorator"/>
    <updated>2016-09-04T00:00:00+08:00</updated>
    <id>http://wangtengchuan.github.io/python/2016/09/04/python-decorator</id>

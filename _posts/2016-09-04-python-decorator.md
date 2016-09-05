@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introduction to MongoDB"
+title: "Python装饰器"
 description: ""
 category: python
 tags: [python, decorator]

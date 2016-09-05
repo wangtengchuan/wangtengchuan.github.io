@@ -5,8 +5,8 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Mon, 05 Sep 2016 16:55:47 +0800</lastBuildDate>
-        <pubDate>Mon, 05 Sep 2016 16:55:47 +0800</pubDate>
+        <lastBuildDate>Mon, 05 Sep 2016 17:31:12 +0800</lastBuildDate>
+        <pubDate>Mon, 05 Sep 2016 17:31:12 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -43,8 +43,9 @@
 &lt;h2 id=&quot;section&quot;&gt;基本概念&lt;/h2&gt;
 
 &lt;h3 id=&quot;bson&quot;&gt;BSON&lt;/h3&gt;
-&lt;p&gt;通俗一点理解，BSON是一种二进制化的json数据。不过不同点在于BSON是有强类型约束的，而json是弱类型。强类型的可序列化数据可以用作RPC, 这点上一般把BSON跟protobuf比较。
-####BSON数据类型&lt;/p&gt;
+&lt;p&gt;通俗一点理解，BSON是一种二进制化的json数据。不过不同点在于BSON是有强类型约束的，而json是弱类型。强类型的可序列化数据可以用作RPC, 这点上一般把BSON跟protobuf比较。&lt;/p&gt;
+
+&lt;p&gt;####BSON数据类型&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -165,8 +166,20 @@ db.user.remove(
 	{status: &quot;D&quot;}
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;#### Bulk Write
-批量插入，可以减少io次数。同时MongoDB可以指定Bulk Write是有序还是无序的。
+
+&lt;p&gt;结果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  _id: ObjectId(&quot;509a8fb2f3f4948bd2f983a0&quot;),
+  user_id: &quot;abc123&quot;,
+  age: 55,
+  status: &#39;A&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么与Mysql的区别在哪里呢？MongoDB在插入前不需要定义一个表的schema，也就是说文档类型是灵活的。&lt;/p&gt;
+
+&lt;h4 id=&quot;bulk-write&quot;&gt;Bulk Write&lt;/h4&gt;
+&lt;p&gt;批量插入，可以减少io次数。同时MongoDB可以指定Bulk Write是有序还是无序的。
 不过不同于Mysql的Transaction, MongoDB不能保证Bulk Write的原子性，也就是不能如果多条指令的一条出错，那么这条指令之前的都会被执行，这条之后的不会被执行，不支持回滚。如果你熟悉Redis的话，你也会知道Redis的Transaction也是不能回滚的。&lt;/p&gt;
 
 &lt;p&gt;MongoDB Bulk Write&lt;/p&gt;
@@ -242,11 +255,16 @@ db.orders.mapReduce(
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;query-&amp;gt;map-&amp;gt;reduce&lt;/p&gt;
 
+&lt;h4 id=&quot;reference&quot;&gt;Reference&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://docs.mongodb.com/manual/_images/data-model-normalized.png&quot; alt=&quot;reference&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;advanced&quot;&gt;Advanced&lt;/h2&gt;
-&lt;p&gt;### Storage Engine
-strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):
-#### WiredTiger
-MongoDB 3.2开始支持的默认的存储引擎，也是官方推荐的存储引擎。主要功能:&lt;/p&gt;
+
+&lt;h3 id=&quot;storage-engine&quot;&gt;Storage Engine&lt;/h3&gt;
+&lt;p&gt;strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):&lt;/p&gt;
+
+&lt;h4 id=&quot;wiredtiger&quot;&gt;WiredTiger&lt;/h4&gt;
+&lt;p&gt;MongoDB 3.2开始支持的默认的存储引擎，也是官方推荐的存储引擎。主要功能:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;document-level concurrency
@@ -264,11 +282,21 @@ MongoDB可以利用空闲的CPU对数据和索引进行压缩。默认使用zlib
 &lt;h4 id=&quot;in-memory-storage-engine&quot;&gt;In-Memory Storage Engine&lt;/h4&gt;
 
 &lt;h3 id=&quot;replication&quot;&gt;Replication(复制)&lt;/h3&gt;
-&lt;p&gt;与Mysql, Redis一样，MongoDB支持复制。&lt;strong&gt;复制集&lt;/strong&gt;提供了冗余、读写分离、容错、failover以及其他一些高性能。
-#### 基本原则
-一个&lt;strong&gt;复制集&lt;/strong&gt;只能有一个主数据库，只有主数据库节点可以接受写的请求。与Mysql一样，主节点纪录所有的修改到一个log文件中（在Mysql中是binLog）。
-#### hearbeat(心跳检测)
-如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。&lt;/p&gt;
+&lt;p&gt;与Mysql, Redis一样，MongoDB支持复制。&lt;strong&gt;复制集&lt;/strong&gt;提供了冗余、读写分离、容错、failover以及其他一些高性能。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;基本原则&lt;/h4&gt;
+&lt;p&gt;一个&lt;strong&gt;复制集&lt;/strong&gt;只能有一个主数据库，只有主数据库节点可以接受写的请求。与Mysql一样，主节点纪录所有的修改到一个log文件中（在Mysql中是binLog）。&lt;/p&gt;
+
+&lt;h4 id=&quot;hearbeat&quot;&gt;hearbeat(心跳检测)&lt;/h4&gt;
+&lt;p&gt;如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。&lt;/p&gt;
+
+&lt;p&gt;##一点结论
+MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON数据的查询。由于可以放在内存中，查询效率比Mysql高。
+而Redis是一个基于内存的Key-Value数据库，先读写内存再异步同步到磁盘，读写速度上比MongoDB有巨大的提升。但是不支持复杂查询。&lt;/p&gt;
+
+&lt;p&gt;测试：500W条嵌套式(embedded document)数据，根据子内容条件查询获取父内容的操作只需要一次I/O，平均耗时1ms（未进行cluster，条件字段有索引，整个Collection体积将近10G）。&lt;/p&gt;
+
+&lt;p&gt;上述操作对于Memcached＋Mysql组合通常需要2-3次I/O（区别于具体设计），即：通过子内容条件查询到子内容主键，然后从Memcached中缓存的entity获取关联的父内容主键，然后从Memcached中获取父内容。&lt;/p&gt;
 
 </description>
                 <link>http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB</link>

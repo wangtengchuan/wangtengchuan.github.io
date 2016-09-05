@@ -35,6 +35,7 @@ tags: []
 
 ### BSON
 通俗一点理解，BSON是一种二进制化的json数据。不过不同点在于BSON是有强类型约束的，而json是弱类型。强类型的可序列化数据可以用作RPC, 这点上一般把BSON跟protobuf比较。
+
 ####BSON数据类型
 
 Type	|Number
@@ -93,6 +94,19 @@ db.user.remove(
 	{status: "D"}
 )
 ```
+
+结果
+
+```
+{
+  _id: ObjectId("509a8fb2f3f4948bd2f983a0"),
+  user_id: "abc123",
+  age: 55,
+  status: 'A'
+}
+```
+那么与Mysql的区别在哪里呢？MongoDB在插入前不需要定义一个表的schema，也就是说文档类型是灵活的。
+
 #### Bulk Write
 批量插入，可以减少io次数。同时MongoDB可以指定Bulk Write是有序还是无序的。
 不过不同于Mysql的Transaction, MongoDB不能保证Bulk Write的原子性，也就是不能如果多条指令的一条出错，那么这条指令之前的都会被执行，这条之后的不会被执行，不支持回滚。如果你熟悉Redis的话，你也会知道Redis的Transaction也是不能回滚的。
@@ -173,9 +187,14 @@ db.orders.mapReduce(
 ```
 query->map->reduce
 
+#### Reference
+![reference](https://docs.mongodb.com/manual/_images/data-model-normalized.png)
+
 ## Advanced
+
 ### Storage Engine
 strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):
+
 #### WiredTiger
 MongoDB 3.2开始支持的默认的存储引擎，也是官方推荐的存储引擎。主要功能:
 
@@ -194,9 +213,20 @@ MongoDB3.2之前的默认，这里略过。
 
 ### Replication(复制)
 与Mysql, Redis一样，MongoDB支持复制。**复制集**提供了冗余、读写分离、容错、failover以及其他一些高性能。
+
 #### 基本原则
 一个**复制集**只能有一个主数据库，只有主数据库节点可以接受写的请求。与Mysql一样，主节点纪录所有的修改到一个log文件中（在Mysql中是binLog）。
+
 #### hearbeat(心跳检测)
 如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。
+
+##一点结论
+MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON数据的查询。由于可以放在内存中，查询效率比Mysql高。
+而Redis是一个基于内存的Key-Value数据库，先读写内存再异步同步到磁盘，读写速度上比MongoDB有巨大的提升。但是不支持复杂查询。
+
+测试：500W条嵌套式(embedded document)数据，根据子内容条件查询获取父内容的操作只需要一次I/O，平均耗时1ms（未进行cluster，条件字段有索引，整个Collection体积将近10G）。
+
+上述操作对于Memcached＋Mysql组合通常需要2-3次I/O（区别于具体设计），即：通过子内容条件查询到子内容主键，然后从Memcached中缓存的entity获取关联的父内容主键，然后从Memcached中获取父内容。
+
 
 

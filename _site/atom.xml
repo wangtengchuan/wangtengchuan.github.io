@@ -4,13 +4,279 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-06-14T15:17:55+08:00</updated>
+ <updated>2016-09-05T16:55:47+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
    <email>wangtengchuan@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Introduction to MongoDB</title>
+   <link href="http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB"/>
+   <updated>2016-09-05T00:00:00+08:00</updated>
+   <id>http://wangtengchuan.github.io/2016/09/05/IntroductionToMongoDB</id>
+   <content type="html">
+&lt;h1 id=&quot;introduction-to-mongodb&quot;&gt;Introduction to MongoDB&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://g.hiphotos.baidu.com/baike/s%3D250/sign=0c60b7650dd79123e4e093719d355917/3b292df5e0fe99257ad18e3d35a85edf8cb171fa.jpg&quot; alt=&quot;mongoDB logo&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mongobd&quot;&gt;什么是MongoBD&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MongoDB&lt;/strong&gt;是一个基于分布式文件存储的数据库。由C++编写。一般来讲，我们可以选择的数据库有Mysql, MongoDB, Redis.他们的区别是什么？适用场景是什么？本文主要通过讲解MongoDB的基本用法、特性对MongoDB特性、适用场景有基本理解。&lt;/p&gt;
+
+&lt;h2 id=&quot;mongodb&quot;&gt;为什么选择MongoDB&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MongoDB&lt;/strong&gt;是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。他支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。MongoDB最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。
+适用场景：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;网站数据：MongoDB非常适合实时的插入，更新与查询，并具备网站实时数据存储所需的复制及高度伸缩性。&lt;/li&gt;
+  &lt;li&gt;缓存：由于性能很高，Mongo 也适合作为信息基础设施的缓存层。在系统重启之后，由Mongo 搭建的持久化缓存层可以避免下层的数据源过载。&lt;/li&gt;
+  &lt;li&gt;大尺寸、低价值的数据：使用传统的关系型数据库存储一些数据时可能会比较昂贵，在此之前，很多时候程序员往往会选择传统的文件进行存储。&lt;/li&gt;
+  &lt;li&gt;高伸缩性的场景：MongoDB 非常适合由数十或数百台服务器组成的数据库，Mongo 的路线图中已经包含对MapReduce引擎的内置支持。&lt;/li&gt;
+  &lt;li&gt;用于对象及JSON数据的存储：MongoDB的BSON数据格式非常适合文档化格式的存储及查询。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;个人使用下来的感受：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;当系统内存可用空间充足的时候，mongoDB会将文档加载到内存中(可以配置)。所以检索速度相当快，比单纯的Mysql快一个数量级；&lt;/li&gt;
+  &lt;li&gt;强大的查询功能，支持Aggregation以及Map-reduce;&lt;/li&gt;
+  &lt;li&gt;灵活的schema(对数据没有非常强的规整性约束)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;基本概念&lt;/h2&gt;
+
+&lt;h3 id=&quot;bson&quot;&gt;BSON&lt;/h3&gt;
+&lt;p&gt;通俗一点理解，BSON是一种二进制化的json数据。不过不同点在于BSON是有强类型约束的，而json是弱类型。强类型的可序列化数据可以用作RPC, 这点上一般把BSON跟protobuf比较。
+####BSON数据类型&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Number&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Double&lt;/td&gt;
+      &lt;td&gt;“double”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;“string”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Object&lt;/td&gt;
+      &lt;td&gt;“object”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Array&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;“array”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Binary data&lt;/td&gt;
+      &lt;td&gt;“binData”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ObjectId&lt;/td&gt;
+      &lt;td&gt;“objectId”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Boolean&lt;/td&gt;
+      &lt;td&gt;“bool”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Date&lt;/td&gt;
+      &lt;td&gt;“date”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Null&lt;/td&gt;
+      &lt;td&gt;“null”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Regular Expression&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;“regex”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DBPointer&lt;/td&gt;
+      &lt;td&gt;“dbPointer”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JavaScript&lt;/td&gt;
+      &lt;td&gt;“javascript”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Symbol&lt;/td&gt;
+      &lt;td&gt;“symbol”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JavaScript (with scope)&lt;/td&gt;
+      &lt;td&gt;“javascriptWithScope”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;32-bit integer&lt;/td&gt;
+      &lt;td&gt;“int”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Timestamp&lt;/td&gt;
+      &lt;td&gt;“timestamp”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;64-bit integer&lt;/td&gt;
+      &lt;td&gt;“long”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Min key&lt;/td&gt;
+      &lt;td&gt;“minKey”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max key&lt;/td&gt;
+      &lt;td&gt;“maxKey”&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;数据模型&lt;/h3&gt;
+&lt;p&gt;databases(可以理解成Mysql的一个数据库)
+	|
+collection(一个database可以有多个colletion,类比table)
+	|
+document(一行数据对应一个document，只不过相对于Mysql的一行，document结构比较松散)
+{“hello,word”:“Mike”}&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;基本操作&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;db.colletion.insert(
+	{
+		name: &quot;sue&quot;,
+		age: 26,
+		status: &quot;A&quot;
+	}
+)
+
+db.user.find(
+	{age: {$gt: 18}},
+	{name: 1}
+).limit(5)
+
+db.user.update(
+	{age:{$gt:18}},
+	{$set: {status: &quot;A&quot;}}
+)
+
+db.user.remove(
+	{status: &quot;D&quot;}
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#### Bulk Write
+批量插入，可以减少io次数。同时MongoDB可以指定Bulk Write是有序还是无序的。
+不过不同于Mysql的Transaction, MongoDB不能保证Bulk Write的原子性，也就是不能如果多条指令的一条出错，那么这条指令之前的都会被执行，这条之后的不会被执行，不支持回滚。如果你熟悉Redis的话，你也会知道Redis的Transaction也是不能回滚的。&lt;/p&gt;
+
+&lt;p&gt;MongoDB Bulk Write&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.characters.bulkWrite(
+      [
+         { insertOne :
+            {
+               &quot;document&quot; :
+               {
+                  &quot;_id&quot; : 4, &quot;char&quot; : &quot;Dithras&quot;, &quot;class&quot; : &quot;barbarian&quot;, &quot;lvl&quot; : 4
+               }
+            }
+         },
+         { insertOne :
+            {
+               &quot;document&quot; :
+               {
+                  &quot;_id&quot; : 5, &quot;char&quot; : &quot;Taeln&quot;, &quot;class&quot; : &quot;fighter&quot;, &quot;lvl&quot; : 3
+               }
+            }
+         },
+         { updateOne :
+            {
+               &quot;filter&quot; : { &quot;char&quot; : &quot;Eldon&quot; },
+               &quot;update&quot; : { $set : { &quot;status&quot; : &quot;Critical Injury&quot; } }
+            }
+         },
+         { deleteOne :
+            { &quot;filter&quot; : { &quot;char&quot; : &quot;Brisbane&quot;} }
+         },
+         { replaceOne :
+            {
+               &quot;filter&quot; : { &quot;char&quot; : &quot;Meldane&quot; },
+               &quot;replacement&quot; : { &quot;char&quot; : &quot;Tanys&quot;, &quot;class&quot; : &quot;oracle&quot;, &quot;lvl&quot; : 4 }
+            }
+         }
+      ]
+   );
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Redis Transaction&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; MULTI
+OK
+&amp;gt; INCR foo
+QUEUED
+&amp;gt; INCR bar
+QUEUED
+&amp;gt; EXEC
+1) (integer) 1
+2) (integer) 1
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;那么他们与什么区别，我个人理解，Redis的Transaction更像是Mysql的stored procedures.它能保证一系列指令按照顺序执行，但是不能保证原子性。MongoDB同样不能保证原子性，它的执行顺序是可以手动指定的。&lt;/p&gt;
+
+&lt;h4 id=&quot;pipeline&quot;&gt;pipeline&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;db.collection.aggregate([{$match:{status:&quot;A&quot;}},
+							{$group:{_id:&quot;$cust_id&quot;, total: {$sum: &quot;$amount&quot;}}}
+]
+)
+
+db.orders.mapReduce(
+			function() {emit(this.cust_id, this.amount);},
+			function() {key, values} (return Array.sum(values)},
+			{
+				query:{$or: [{status: &quot;A&quot;}, {age:{$lt: 30}}},
+				out: &quot;order_totals&quot;
+			}
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;query-&amp;gt;map-&amp;gt;reduce&lt;/p&gt;
+
+&lt;h2 id=&quot;advanced&quot;&gt;Advanced&lt;/h2&gt;
+&lt;p&gt;### Storage Engine
+strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):
+#### WiredTiger
+MongoDB 3.2开始支持的默认的存储引擎，也是官方推荐的存储引擎。主要功能:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;document-level concurrency
+多个客户度可以同时写一个collection的不同的行，与mysql InnoDB行级锁是一样的。&lt;/li&gt;
+  &lt;li&gt;checkpoingting &amp;amp; journal
+checkpoint主要是在插入数据的时候做快照，journal主要是记录所有的数据修改。&lt;/li&gt;
+  &lt;li&gt;compressing
+MongoDB可以利用空闲的CPU对数据和索引进行压缩。默认使用zlib压缩算法&lt;/li&gt;
+  &lt;li&gt;encryption&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;mmapv1&quot;&gt;MMAPv1&lt;/h4&gt;
+&lt;p&gt;MongoDB3.2之前的默认，这里略过。&lt;/p&gt;
+
+&lt;h4 id=&quot;in-memory-storage-engine&quot;&gt;In-Memory Storage Engine&lt;/h4&gt;
+
+&lt;h3 id=&quot;replication&quot;&gt;Replication(复制)&lt;/h3&gt;
+&lt;p&gt;与Mysql, Redis一样，MongoDB支持复制。&lt;strong&gt;复制集&lt;/strong&gt;提供了冗余、读写分离、容错、failover以及其他一些高性能。
+#### 基本原则
+一个&lt;strong&gt;复制集&lt;/strong&gt;只能有一个主数据库，只有主数据库节点可以接受写的请求。与Mysql一样，主节点纪录所有的修改到一个log文件中（在Mysql中是binLog）。
+#### hearbeat(心跳检测)
+如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>vim技巧</title>

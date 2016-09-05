@@ -169,10 +169,12 @@ QUEUED
 那么他们与什么区别，我个人理解，Redis的Transaction更像是Mysql的stored procedures.它能保证一系列指令按照顺序执行，但是不能保证原子性。MongoDB同样不能保证原子性，它的执行顺序是可以手动指定的。
 
 #### pipeline
+MongoDB的pipeline跟Linux Shell的pipeline相似，上一个的输出作为下一个的输入。
 
 ```
 db.collection.aggregate([{$match:{status:"A"}},
-							{$group:{_id:"$cust_id", total: {$sum: "$amount"}}}
+							{$group:{_id:"$cust_id", 
+							total: {$sum: "$amount"}}}
 ]
 )
 
@@ -188,9 +190,75 @@ db.orders.mapReduce(
 query->map->reduce
 
 #### Reference
+类似于Mysql的外键，可以用来减少表中的冗余信息。
 ![reference](https://docs.mongodb.com/manual/_images/data-model-normalized.png)
 
 ## Advanced
+
+### Index
+MongoDB提供了非常完整而强大的索引功能。默认情况下，对_id字段进行索引(所以_id不能重复)。我们自己也可以为某个字段增加index:
+
+```
+{
+  "_id": ObjectId("570c04a4ad233577f97dc459"),
+  "score": 1034,
+  "location": { state: "NY", city: "New York" }
+}
+```
+下面以升序的方式建立索引(-1是降序)
+
+```
+db.records.createIndex( { score: 1 } )
+```
+那么我们在find时候就会用到这个index
+
+```
+db.records.find( { score: 2 } )
+```
+####嵌套的Index
+对于嵌套的field,我们既可以对整个嵌套域建立索引，也可以对嵌套域内的某个field建立索引。
+
+```
+{
+  "_id": ObjectId("570c04a4ad233577f97dc459"),
+  "score": 1034,
+  "location": { state: "NY", city: "New York" }
+}
+```
+那么可以对location本身建立索引:
+
+```
+db.records.createIndex( { location: 1 } )
+```
+也可以对location中的state字段建立索引。
+
+```
+db.records.createIndex( { "location.state": 1 } )
+```
+
+####联合索引
+MongoDB可以建立不超过31个索引项的联合索引。
+
+```
+{
+ "_id": ObjectId(...),
+ "item": "Banana",
+ "category": ["food", "produce", "grocery"],
+ "location": "4th Street Store",
+ "stock": 4,
+ "type": "cases"
+}
+```
+
+```
+db.products.createIndex( { "item": 1, "stock": 1 } )
+```
+这个联合索引对于下面两种查询都支持：
+
+```
+db.products.find( { item: "Banana" } )
+db.products.find( { item: "Banana", stock: { gt: 5 } } )
+```
 
 ### Storage Engine
 strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):

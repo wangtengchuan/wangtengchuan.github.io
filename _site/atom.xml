@@ -4,7 +4,7 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-05T21:08:44+08:00</updated>
+ <updated>2016-09-05T21:42:16+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
@@ -243,9 +243,11 @@ QUEUED
 &lt;p&gt;那么他们与什么区别，我个人理解，Redis的Transaction更像是Mysql的stored procedures.它能保证一系列指令按照顺序执行，但是不能保证原子性。MongoDB同样不能保证原子性，它的执行顺序是可以手动指定的。&lt;/p&gt;
 
 &lt;h4 id=&quot;pipeline&quot;&gt;pipeline&lt;/h4&gt;
+&lt;p&gt;MongoDB的pipeline跟Linux Shell的pipeline相似，上一个的输出作为下一个的输入。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;db.collection.aggregate([{$match:{status:&quot;A&quot;}},
-							{$group:{_id:&quot;$cust_id&quot;, total: {$sum: &quot;$amount&quot;}}}
+							{$group:{_id:&quot;$cust_id&quot;, 
+							total: {$sum: &quot;$amount&quot;}}}
 ]
 )
 
@@ -261,9 +263,66 @@ db.orders.mapReduce(
 &lt;p&gt;query-&amp;gt;map-&amp;gt;reduce&lt;/p&gt;
 
 &lt;h4 id=&quot;reference&quot;&gt;Reference&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;https://docs.mongodb.com/manual/_images/data-model-normalized.png&quot; alt=&quot;reference&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;类似于Mysql的外键，可以用来减少表中的冗余信息。
+&lt;img src=&quot;https://docs.mongodb.com/manual/_images/data-model-normalized.png&quot; alt=&quot;reference&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;advanced&quot;&gt;Advanced&lt;/h2&gt;
+
+&lt;h3 id=&quot;index&quot;&gt;Index&lt;/h3&gt;
+&lt;p&gt;MongoDB提供了非常完整而强大的索引功能。默认情况下，对_id字段进行索引(所以_id不能重复)。我们自己也可以为某个字段增加index:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &quot;_id&quot;: ObjectId(&quot;570c04a4ad233577f97dc459&quot;),
+  &quot;score&quot;: 1034,
+  &quot;location&quot;: { state: &quot;NY&quot;, city: &quot;New York&quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面以升序的方式建立索引(-1是降序)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.records.createIndex( { score: 1 } )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么我们在find时候就会用到这个index&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.records.find( { score: 2 } )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;####嵌套的Index
+对于嵌套的field,我们既可以对整个嵌套域建立索引，也可以对嵌套域内的某个field建立索引。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &quot;_id&quot;: ObjectId(&quot;570c04a4ad233577f97dc459&quot;),
+  &quot;score&quot;: 1034,
+  &quot;location&quot;: { state: &quot;NY&quot;, city: &quot;New York&quot; }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那么可以对location本身建立索引:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.records.createIndex( { location: 1 } )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以对location中的state字段建立索引。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.records.createIndex( { &quot;location.state&quot;: 1 } )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;####联合索引
+MongoDB可以建立不超过31个索引项的联合索引。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+ &quot;_id&quot;: ObjectId(...),
+ &quot;item&quot;: &quot;Banana&quot;,
+ &quot;category&quot;: [&quot;food&quot;, &quot;produce&quot;, &quot;grocery&quot;],
+ &quot;location&quot;: &quot;4th Street Store&quot;,
+ &quot;stock&quot;: 4,
+ &quot;type&quot;: &quot;cases&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;db.products.createIndex( { &quot;item&quot;: 1, &quot;stock&quot;: 1 } )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个联合索引对于下面两种查询都支持：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.products.find( { item: &quot;Banana&quot; } )
+db.products.find( { item: &quot;Banana&quot;, stock: { gt: 5 } } )
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;storage-engine&quot;&gt;Storage Engine&lt;/h3&gt;
 &lt;p&gt;strorage engine决定了数据在（内存和磁盘中的）存储和管理方式。MongoDB主要有三种strorage engine(具体用哪种可以在启动mongo-server的时候配置，如果不配置的话就用默认的):&lt;/p&gt;

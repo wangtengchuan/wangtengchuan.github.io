@@ -9,7 +9,7 @@ tags: []
 
 # Introduction to MongoDB
 
-![mongoDB logo](http://g.hiphotos.baidu.com/baike/s%3D250/sign=0c60b7650dd79123e4e093719d355917/3b292df5e0fe99257ad18e3d35a85edf8cb171fa.jpg)
+![mongoDB logo](https://webassets.mongodb.com/_com_assets/global/mongodb-logo-white.png)
 
 
 ## 什么是MongoBD

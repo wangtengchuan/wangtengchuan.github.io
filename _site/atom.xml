@@ -4,7 +4,7 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-05T17:31:12+08:00</updated>
+ <updated>2016-09-05T17:45:43+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
@@ -20,7 +20,7 @@
    <content type="html">
 &lt;h1 id=&quot;introduction-to-mongodb&quot;&gt;Introduction to MongoDB&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://g.hiphotos.baidu.com/baike/s%3D250/sign=0c60b7650dd79123e4e093719d355917/3b292df5e0fe99257ad18e3d35a85edf8cb171fa.jpg&quot; alt=&quot;mongoDB logo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://webassets.mongodb.com/_com_assets/global/mongodb-logo-white.png&quot; alt=&quot;mongoDB logo&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;mongobd&quot;&gt;什么是MongoBD&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;MongoDB&lt;/strong&gt;是一个基于分布式文件存储的数据库。由C++编写。一般来讲，我们可以选择的数据库有Mysql, MongoDB, Redis.他们的区别是什么？适用场景是什么？本文主要通过讲解MongoDB的基本用法、特性对MongoDB特性、适用场景有基本理解。&lt;/p&gt;

@@ -4,7 +4,7 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-05T21:42:16+08:00</updated>
+ <updated>2016-09-06T10:23:03+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
@@ -303,8 +303,9 @@ db.orders.mapReduce(
 &lt;pre&gt;&lt;code&gt;db.records.createIndex( { &quot;location.state&quot;: 1 } )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;####联合索引
-MongoDB可以建立不超过31个索引项的联合索引。&lt;/p&gt;
+&lt;p&gt;####联合索引&lt;/p&gt;
+
+&lt;p&gt;MongoDB可以建立不超过31个索引项的联合索引。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;{
  &quot;_id&quot;: ObjectId(...),

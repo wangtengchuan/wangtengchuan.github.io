@@ -237,6 +237,7 @@ db.records.createIndex( { "location.state": 1 } )
 ```
 
 ####联合索引
+
 MongoDB可以建立不超过31个索引项的联合索引。
 
 ```

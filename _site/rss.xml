@@ -5,8 +5,8 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Mon, 05 Sep 2016 21:42:16 +0800</lastBuildDate>
-        <pubDate>Mon, 05 Sep 2016 21:42:16 +0800</pubDate>
+        <lastBuildDate>Tue, 06 Sep 2016 10:23:03 +0800</lastBuildDate>
+        <pubDate>Tue, 06 Sep 2016 10:23:03 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -298,8 +298,9 @@ db.orders.mapReduce(
 &lt;pre&gt;&lt;code&gt;db.records.createIndex( { &quot;location.state&quot;: 1 } )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;####联合索引
-MongoDB可以建立不超过31个索引项的联合索引。&lt;/p&gt;
+&lt;p&gt;####联合索引&lt;/p&gt;
+
+&lt;p&gt;MongoDB可以建立不超过31个索引项的联合索引。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;{
  &quot;_id&quot;: ObjectId(...),

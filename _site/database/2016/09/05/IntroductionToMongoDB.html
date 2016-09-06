@@ -411,8 +411,9 @@ db.orders.mapReduce(
 
 <pre><code>db.records.find( { score: 2 } )
 </code></pre>
-<p>####嵌套的Index
-对于嵌套的field,我们既可以对整个嵌套域建立索引，也可以对嵌套域内的某个field建立索引。</p>
+<p>####嵌套的Index</p>
+
+<p>对于嵌套的field,我们既可以对整个嵌套域建立索引，也可以对嵌套域内的某个field建立索引。</p>
 
 <pre><code>{
   "_id": ObjectId("570c04a4ad233577f97dc459"),
@@ -481,8 +482,9 @@ MongoDB可以利用空闲的CPU对数据和索引进行压缩。默认使用zlib
 <h4 id="hearbeat">hearbeat(心跳检测)</h4>
 <p>如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。</p>
 
-<p>##一点结论
-MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON数据的查询。由于可以放在内存中，查询效率比Mysql高。
+<p>##一点结论</p>
+
+<p>MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON数据的查询。由于可以放在内存中，查询效率比Mysql高。
 而Redis是一个基于内存的Key-Value数据库，先读写内存再异步同步到磁盘，读写速度上比MongoDB有巨大的提升。但是不支持复杂查询。</p>
 
 <p>测试：500W条嵌套式(embedded document)数据，根据子内容条件查询获取父内容的操作只需要一次I/O，平均耗时1ms（未进行cluster，条件字段有索引，整个Collection体积将近10G）。</p>

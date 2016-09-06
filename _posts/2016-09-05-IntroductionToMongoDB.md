@@ -216,6 +216,7 @@ db.records.createIndex( { score: 1 } )
 db.records.find( { score: 2 } )
 ```
 ####嵌套的Index
+
 对于嵌套的field,我们既可以对整个嵌套域建立索引，也可以对嵌套域内的某个field建立索引。
 
 ```
@@ -290,6 +291,7 @@ MongoDB3.2之前的默认，这里略过。
 如果primary在10s之内没有与其他数据库通讯，就认为primary挂掉了。那么剩下的数据库就会通过一个投票算法选出新的primary，整个过程是自动进行的，无需人工干预。
 
 ##一点结论
+
 MongoDB是一个基于文档的数据库，MongoDB善长的是对无模式JSON数据的查询。由于可以放在内存中，查询效率比Mysql高。
 而Redis是一个基于内存的Key-Value数据库，先读写内存再异步同步到磁盘，读写速度上比MongoDB有巨大的提升。但是不支持复杂查询。
 

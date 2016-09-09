@@ -476,6 +476,10 @@ MongoDB可以利用空闲的CPU对数据和索引进行压缩。默认使用zlib
 <h3 id="replication">Replication(复制)</h3>
 <p>与Mysql, Redis一样，MongoDB支持复制。<strong>复制集</strong>提供了冗余、读写分离、容错、failover以及其他一些高性能。</p>
 
+<p>####Mysql replication</p>
+
+<p>Mysql replication的一般的适用场景是大量读，少量写的情况。对于有频繁写的业务，由于Mysql replication的同步是异步，带来的延迟可能导致脏数据。实际上在5.5版本之前，Mysql是不能保证主从同步的实时性的。所以对于实时要求比较高的业务，Mysql读写分离不是一个好的选择。当然Mysql最新的版本支持semi-sync replication，</p>
+
 <h4 id="section-3">基本原则</h4>
 <p>一个<strong>复制集</strong>只能有一个主数据库，只有主数据库节点可以接受写的请求。与Mysql一样，主节点纪录所有的修改到一个log文件中（在Mysql中是binLog）。</p>
 

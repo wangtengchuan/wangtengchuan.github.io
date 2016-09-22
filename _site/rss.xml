@@ -5,10 +5,25 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 22 Sep 2016 10:38:41 +0800</lastBuildDate>
-        <pubDate>Thu, 22 Sep 2016 10:38:41 +0800</pubDate>
+        <lastBuildDate>Thu, 22 Sep 2016 10:40:27 +0800</lastBuildDate>
+        <pubDate>Thu, 22 Sep 2016 10:40:27 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>Process and Threads</title>
+                <description>
+&lt;p&gt;#进程与线程
+本文介绍进程与线程中的各种基本原理与用法，文中但凡是涉及具体实现或者代码示例的均以Python为例。
+##进程间通讯
+那么多个进程之间怎么通讯呢？我们都知道进程通讯有很多种方式#TODO
+###信号(signal)
+&lt;a href=&quot;http://blog.csdn.net/jhonguy/article/details/7716257&quot;&gt;信号&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://wangtengchuan.github.io/2016/09/22/process-and-thread</link>
+                <guid>http://wangtengchuan.github.io/2016/09/22/process-and-thread</guid>
+                <pubDate>Thu, 22 Sep 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>Introduction to MongoDB</title>
@@ -1016,21 +1031,6 @@ a start and end fence lines to delimit the code block.
                 <link>http://wangtengchuan.github.io/2016/03/19/redis</link>
                 <guid>http://wangtengchuan.github.io/2016/03/19/redis</guid>
                 <pubDate>Sat, 19 Mar 2016 00:00:00 +0800</pubDate>
-        </item>
-
-        <item>
-                <title>Process and Threads</title>
-                <description>
-&lt;p&gt;#进程与线程
-本文介绍进程与线程中的各种基本原理与用法，文中但凡是涉及具体实现或者代码示例的均以Python为例。
-##进程间通讯
-那么多个进程之间怎么通讯呢？我们都知道进程通讯有很多种方式#TODO
-###信号(signal)
-&lt;a href=&quot;http://blog.csdn.net/jhonguy/article/details/7716257&quot;&gt;信号&lt;/a&gt;&lt;/p&gt;
-</description>
-                <link>http://wangtengchuan.github.io/2016/03/09/new-post</link>
-                <guid>http://wangtengchuan.github.io/2016/03/09/new-post</guid>
-                <pubDate>Wed, 09 Mar 2016 00:00:00 +0800</pubDate>
         </item>
 
         <item>

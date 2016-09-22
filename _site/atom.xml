@@ -4,13 +4,28 @@
  <title>Tengchuan</title>
  <link href="http://wangtengchuan.github.io/atom.xml" rel="self"/>
  <link href="http://wangtengchuan.github.io"/>
- <updated>2016-09-22T10:38:41+08:00</updated>
+ <updated>2016-09-22T10:40:27+08:00</updated>
  <id>http://wangtengchuan.github.io</id>
  <author>
    <name>Tengchuan Wang</name>
    <email>wangtengchuan@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Process and Threads</title>
+   <link href="http://wangtengchuan.github.io/2016/09/22/process-and-thread"/>
+   <updated>2016-09-22T00:00:00+08:00</updated>
+   <id>http://wangtengchuan.github.io/2016/09/22/process-and-thread</id>
+   <content type="html">
+&lt;p&gt;#进程与线程
+本文介绍进程与线程中的各种基本原理与用法，文中但凡是涉及具体实现或者代码示例的均以Python为例。
+##进程间通讯
+那么多个进程之间怎么通讯呢？我们都知道进程通讯有很多种方式#TODO
+###信号(signal)
+&lt;a href=&quot;http://blog.csdn.net/jhonguy/article/details/7716257&quot;&gt;信号&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Introduction to MongoDB</title>
@@ -1017,21 +1032,6 @@ a start and end fence lines to delimit the code block.
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Process and Threads</title>
-   <link href="http://wangtengchuan.github.io/2016/03/09/new-post"/>
-   <updated>2016-03-09T00:00:00+08:00</updated>
-   <id>http://wangtengchuan.github.io/2016/03/09/new-post</id>
-   <content type="html">
-&lt;p&gt;#进程与线程
-本文介绍进程与线程中的各种基本原理与用法，文中但凡是涉及具体实现或者代码示例的均以Python为例。
-##进程间通讯
-那么多个进程之间怎么通讯呢？我们都知道进程通讯有很多种方式#TODO
-###信号(signal)
-&lt;a href=&quot;http://blog.csdn.net/jhonguy/article/details/7716257&quot;&gt;信号&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  

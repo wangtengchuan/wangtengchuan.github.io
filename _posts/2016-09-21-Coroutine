@@ -1,0 +1,12 @@
+---
+layout: post
+title: "协程"
+description: ""
+category: 
+tags: [python]
+---
+{% include JB/setup %}
+
+#协程
+##
+在Python2中xrange也是利用generator来实现迭代的，不会生成一个list，所以迭代的时候会节省不少内存。只有在真正需要创建一个list的时候range会优于xrange。当然在Python3中xrange函数已经被废弃了，而它的功能被合并进了range。[range与xrange使用场景](http://stackoverflow.com/questions/135041/should-you-always-favor-xrange-over-range)

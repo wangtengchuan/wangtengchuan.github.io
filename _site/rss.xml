@@ -5,8 +5,8 @@
         <description>Tengchuan - Tengchuan Wang</description>
         <link>http://wangtengchuan.github.io</link>
         <atom:link href="http://wangtengchuan.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 09 Sep 2016 17:28:58 +0800</lastBuildDate>
-        <pubDate>Fri, 09 Sep 2016 17:28:58 +0800</pubDate>
+        <lastBuildDate>Thu, 22 Sep 2016 10:38:41 +0800</lastBuildDate>
+        <pubDate>Thu, 22 Sep 2016 10:38:41 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -691,6 +691,14 @@ m. say_your_age()
 &lt;p&gt;#VIM技巧
 &lt;strong&gt;VIM&lt;/strong&gt;是非常好用的在粘贴剪贴板的多行文本的时候，文本会[自动缩进][1]。非常头疼。其实有一个比较好的解决方案，就是设置进入粘贴模式&lt;em&gt;set paste&lt;/em&gt;。然后粘贴完毕的时候又取消粘贴模式&lt;em&gt;set nopaste&lt;/em&gt;。可以在配置文件里面设置F9键为切换键。*set pastetoggle=&lt;f9&gt;*
 [1]http://hi.csdn.net/attachment/201103/1/0_12989517383EM3.gif&lt;/f9&gt;&lt;/p&gt;
+
+&lt;p&gt;##比较好用的插件
+&lt;a href=&quot;http://vim.spf13.com/&quot;&gt;spf13&lt;/a&gt;是比较好用的插件。
+关于复制粘贴vim以外的文本：复制:set mouse=h或者可以在点击鼠标时候按住&lt;a href=&quot;http://stackoverflow.com/questions/4608161/copy-text-out-of-vim-with-set-mouse-a-enabled&quot;&gt;alt&lt;/a&gt;（仅针对mac）.
+#### vundle
+&lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;vundle&lt;/a&gt;是用来管理vim插件的工具包。
+###一些小技巧
+怎样删除引号内的字符串&lt;strong&gt;di’&lt;/strong&gt;&lt;/p&gt;
 </description>
                 <link>http://wangtengchuan.github.io/2016/03/19/vim</link>
                 <guid>http://wangtengchuan.github.io/2016/03/19/vim</guid>
@@ -1011,8 +1019,14 @@ a start and end fence lines to delimit the code block.
         </item>
 
         <item>
-                <title></title>
+                <title>Process and Threads</title>
                 <description>
+&lt;p&gt;#进程与线程
+本文介绍进程与线程中的各种基本原理与用法，文中但凡是涉及具体实现或者代码示例的均以Python为例。
+##进程间通讯
+那么多个进程之间怎么通讯呢？我们都知道进程通讯有很多种方式#TODO
+###信号(signal)
+&lt;a href=&quot;http://blog.csdn.net/jhonguy/article/details/7716257&quot;&gt;信号&lt;/a&gt;&lt;/p&gt;
 </description>
                 <link>http://wangtengchuan.github.io/2016/03/09/new-post</link>
                 <guid>http://wangtengchuan.github.io/2016/03/09/new-post</guid>
